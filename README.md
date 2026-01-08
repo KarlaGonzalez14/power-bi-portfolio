@@ -26,7 +26,7 @@ Este portafolio tiene como objetivo demostrar mis competencias como **Data Analy
 - KPIs principales  
 - Insights relevantes  
 - Capturas del dashboard  
-- Archivo `.pbix` y/o enlace al dashboard online  
+- Archivo `.pbix`  
 
 ---
 
