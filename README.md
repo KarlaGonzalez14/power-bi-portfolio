@@ -39,7 +39,7 @@ Este portafolio tiene como objetivo demostrar mis competencias como **Data Analy
 
 ---
 
-🧠 Metodología de trabajo
+## 🧠 Metodología de trabajo
 Para cada proyecto se sigue el siguiente enfoque:
 - Comprensión del requerimiento de negocio
 - Definición de KPIs y métricas clave
@@ -49,7 +49,8 @@ Para cada proyecto se sigue el siguiente enfoque:
 
 ---
 
-📌 Nota sobre los datos
+## 📌 Nota sobre los datos:
+
 Todos los datasets utilizados en este repositorio son ficticios o públicos, creados con fines educativos y de demostración analítica. No contienen información confidencial.
 
 ---
