@@ -1,4 +1,4 @@
-# 📊 Power BI Portfolio
+# 📊 Power BI Portafolio
 
 Repositorio que reúne una colección de **dashboards desarrollados en Power BI**, enfocados en distintos **requerimientos de negocio simulados**. Cada proyecto representa un escenario diferente y demuestra mis habilidades en análisis de datos, visualización de KPIs y generación de insights para la toma de decisiones.
 
