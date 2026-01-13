@@ -67,4 +67,12 @@ El dashboard permite:
 - DAX  
 - Excel / CSV (datos ficticios)
 - Análisis de series temporales
+  
+---
+
+## 📬 Contacto
+📌 **LinkedIn: [LinkedIn – Karla María González](https://www.linkedin.com/in/karla-maria-gonzalez-estrada-a07b44285/)**
+
+📌 **Correo: karlaestrada1434@gmail.com**
+
 
