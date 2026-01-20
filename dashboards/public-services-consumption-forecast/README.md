@@ -1,4 +1,4 @@
-# 🚰 Public Services Consumption & Forecast Dashboard
+# 🚰 Dashboard Servicios Públicos & Forecast
 
 ## 📝 Descripción
 Dashboard desarrollado en **Power BI** para analizar el comportamiento histórico del consumo de servicios públicos y proyectar su comportamiento a corto plazo. El análisis se basa en **series temporales**, permitiendo visualizar tendencias, variaciones mensuales y estimaciones a 2 meses que apoyan la planeación y asignación eficiente de recursos.
