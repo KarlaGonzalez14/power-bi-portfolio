@@ -1,4 +1,5 @@
-# 📦 Inventory Management Dashboard
+# 📦 Dashboard Gestión de Inventario
+<img width="1000" height="500" alt="Captura de pantalla 2026-01-07 225417" src="https://github.com/user-attachments/assets/5bfde8ac-f263-4367-8043-a60669d9703a" />
 
 ## 📝 Descripción
 Dashboard interactivo desarrollado en **Power BI** para la gestión y análisis del inventario por producto y subproducto. Permite visualizar de forma dinámica el movimiento de almacén, las unidades en existencia y la valorización del inventario a precio de costo y de venta, apoyando la toma de decisiones operativas y de abastecimiento.
