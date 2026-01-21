@@ -18,8 +18,8 @@ Este portafolio tiene como objetivo demostrar mis competencias como **Data Analy
 
 | Proyecto | Área | Descripción |
 |--------|------|-------------|
-| [📦 Inventory Management Dashboard](dashboards/inventory-management-dashboard) | Operaciones / Inventarios | Análisis dinámico del inventario por producto y subproducto, movimiento mensual, valorización a costo y precio de venta. |
-| [🚰 Public Services Consumption & Forecast Dashboard](dashboards/public-services-consumption-forecast) | Servicios Públicos / Finanzas | Análisis histórico del consumo de servicios públicos y proyección a 2 meses mediante series temporales para optimizar la asignación de recursos. |
+| [📦 Dashboard Gestión de Inventario](dashboards/gestión-inventario) | Operaciones / Inventarios | Análisis dinámico del inventario por producto y subproducto, movimiento mensual, valorización a costo y precio de venta. |
+| [🚰 Dashboard Consumo de Servicios Públicos & Forecast Dashboard](dashboards/consumo-servicios-públicos-forecast) | Servicios Públicos / Finanzas | Análisis histórico del consumo de servicios públicos y proyección a 2 meses mediante series temporales para optimizar la asignación de recursos. |
 
 
 
