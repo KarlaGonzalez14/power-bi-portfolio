@@ -20,6 +20,7 @@ Este portafolio tiene como objetivo demostrar mis competencias como **Data Analy
 |--------|------|-------------|
 | [📦 Dashboard Gestión de Inventario](dashboards/gestión-inventario) | Operaciones / Inventarios | Análisis dinámico del inventario por producto y subproducto, movimiento mensual, valorización a costo y precio de venta. |
 | [🚰 Dashboard Consumo de Servicios Públicos & Forecast](dashboards/consumo-servicios-públicos-forecast) | Servicios Públicos / Finanzas | Análisis histórico del consumo de servicios públicos y proyección a 2 meses mediante series temporales para optimizar la asignación de recursos. |
+| [🗺️ Dashboard de Segmentación de Clientes por Ciudad (B2B vs B2C)](dashboards/segmentación-clientes) | Comercial / Ventas | Análisis geoespacial de clientes por ciudad, segmentados en B2B y B2C, para identificar la distribución y concentración del mercado por ubicación. |
 
 
 
