@@ -1,0 +1,28 @@
+model Model
+	culture: es-MX
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: es-MX
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["Campana_2023","Clientes","Empleados_2023","productos_2023","Ventas"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table Campana_2023
+ref table DateTableTemplate_3210b430-07b9-4384-a903-1fd4a4753074
+ref table LocalDateTable_6b3226ce-1539-4b3b-b6b7-926ce82a479f
+ref table LocalDateTable_a7103c6f-5e1c-4a70-838b-eb85ecd367e0
+ref table Clientes
+ref table LocalDateTable_13404f58-2651-4fc0-8104-2666e2806869
+ref table Empleados_2023
+ref table productos_2023
+ref table Ventas
+ref table Date
+ref table LocalDateTable_75e382d1-98d5-460b-b8be-29badc6a56f2
+
+ref cultureInfo es-MX
+

@@ -1,0 +1,40 @@
+relationship 3d0aa8ef-f53e-4343-8a68-12760b6a9f5a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Campana_2023.Fecha_Inicio
+	toColumn: LocalDateTable_6b3226ce-1539-4b3b-b6b7-926ce82a479f.Date
+
+relationship 6556a897-3278-4d13-8087-48ce67f73a75
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Campana_2023.Fecha_Fin
+	toColumn: LocalDateTable_a7103c6f-5e1c-4a70-838b-eb85ecd367e0.Date
+
+relationship 9c139286-ade7-4ec8-a4af-ea3c44cf0548
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Clientes.Fecha_Registro
+	toColumn: LocalDateTable_13404f58-2651-4fc0-8104-2666e2806869.Date
+
+relationship 0c84fc53-b4a9-456d-be68-56d4eaff1996
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Date.Date
+	toColumn: LocalDateTable_75e382d1-98d5-460b-b8be-29badc6a56f2.Date
+
+relationship 307255bc-3aa4-2ab9-311a-b3aa342dc56b
+	fromColumn: Ventas.ID_Campana
+	toColumn: Campana_2023.ID_Campaña
+
+relationship 2707b40c-6d85-c064-ce69-4ed6bf13094b
+	fromColumn: Ventas.ID_Cliente
+	toColumn: Clientes.ID_Cliente
+
+relationship bf295d87-ae59-5780-fd44-91b9477576be
+	fromColumn: Ventas.ID_Empleado
+	toColumn: Empleados_2023.ID_Empleado
+
+relationship 36842066-83bc-4dd1-4908-6c11f343d7f8
+	fromColumn: Ventas.ID_Producto
+	toColumn: productos_2023.ID_Producto
+
+relationship 76a8732c-2ee5-9d5e-7a65-a8388ab22ce1
+	fromColumn: Ventas.Fecha_Venta
+	toColumn: Date.Date
+

@@ -1,0 +1,62 @@
+table productos_2023
+	lineageTag: f06f5da6-0f62-4080-b508-1a2285f98fb8
+
+	column ID_Producto
+		dataType: string
+		lineageTag: 0cf48e09-dbe4-4f92-bb8a-c9dd99a86010
+		summarizeBy: none
+		sourceColumn: ID_Producto
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nombre_Producto
+		dataType: string
+		lineageTag: 1bcc9b99-ceef-4052-9459-df1a4c76fdab
+		summarizeBy: none
+		sourceColumn: Nombre_Producto
+
+		annotation SummarizationSetBy = Automatic
+
+	column Categoría
+		dataType: string
+		lineageTag: 86143cce-ca11-41fb-a15a-9f7b91dcdf9e
+		summarizeBy: none
+		sourceColumn: Categoría
+
+		annotation SummarizationSetBy = Automatic
+
+	column Costo_Producto
+		dataType: double
+		lineageTag: 6291269b-4ded-4163-a69b-aedb98455fd4
+		summarizeBy: none
+		sourceColumn: Costo_Producto
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Precio_Unitario
+		dataType: double
+		lineageTag: 391e3236-7842-40ef-838e-8a9128b45431
+		summarizeBy: none
+		sourceColumn: Precio_Unitario
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition productos_2023 = m
+		mode: import
+		source =
+				let
+				    Origen = Excel.Workbook(File.Contents("C:\Users\karla\Downloads\productos_2023_0283115d-d5eb-40cf-8832-11de377023d9.xlsx"), null, true),
+				    Sheet1_Sheet = Origen{[Item="Sheet1",Kind="Sheet"]}[Data],
+				    #"Encabezados promovidos" = Table.PromoteHeaders(Sheet1_Sheet, [PromoteAllScalars=true]),
+				    #"Tipo cambiado" = Table.TransformColumnTypes(#"Encabezados promovidos",{{"ID_Producto", type text}, {"Nombre_Producto", type text}, {"Categoría", type text}, {"Costo_Producto", type number}, {"Precio_Unitario", type number}})
+				in
+				    #"Tipo cambiado"
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,93 @@
+table Campana_2023
+	lineageTag: d0ae5adf-f2ec-4a79-97fd-4bc21879f756
+
+	column ID_Campaña
+		dataType: string
+		lineageTag: 9ceaaad7-781f-4d89-b5b0-e4b303dabd0c
+		summarizeBy: none
+		sourceColumn: ID_Campaña
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nombre_Campaña
+		dataType: string
+		lineageTag: af16b772-7c83-42b6-87bd-3a8d27e6a793
+		summarizeBy: none
+		sourceColumn: Nombre_Campaña
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tipo_Campaña
+		dataType: string
+		lineageTag: e0905f9b-beb2-427c-a68f-834b4594db31
+		summarizeBy: none
+		sourceColumn: Tipo_Campaña
+
+		annotation SummarizationSetBy = Automatic
+
+	column Presupuesto
+		dataType: int64
+		formatString: 0
+		lineageTag: 1e7c47c2-a937-4f02-b537-35bf2ac9943f
+		summarizeBy: sum
+		sourceColumn: Presupuesto
+
+		annotation SummarizationSetBy = Automatic
+
+	column Canal_Adquisición
+		dataType: string
+		lineageTag: 3f2dd282-7cd2-4fe1-b4ef-133fd6cffae1
+		summarizeBy: none
+		sourceColumn: Canal_Adquisición
+
+		annotation SummarizationSetBy = Automatic
+
+	column Fecha_Inicio
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: efed8298-c166-4fb9-85f8-a4f755218b83
+		summarizeBy: none
+		sourceColumn: Fecha_Inicio
+
+		variation Variación
+			isDefault
+			relationship: 3d0aa8ef-f53e-4343-8a68-12760b6a9f5a
+			defaultHierarchy: LocalDateTable_6b3226ce-1539-4b3b-b6b7-926ce82a479f.'Jerarquía de fechas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Fecha_Fin
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 2c89c786-d4ac-44fd-af6f-2e91fe312d0f
+		summarizeBy: none
+		sourceColumn: Fecha_Fin
+
+		variation Variación
+			isDefault
+			relationship: 6556a897-3278-4d13-8087-48ce67f73a75
+			defaultHierarchy: LocalDateTable_a7103c6f-5e1c-4a70-838b-eb85ecd367e0.'Jerarquía de fechas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition Campana_2023 = m
+		mode: import
+		source =
+				let
+				    Origen = Excel.Workbook(File.Contents("C:\Users\karla\Downloads\campanas_2023_0da99521-b06b-46b8-9768-2608c22c204a.xlsx"), null, true),
+				    Sheet1_Sheet = Origen{[Item="Sheet1",Kind="Sheet"]}[Data],
+				    #"Encabezados promovidos" = Table.PromoteHeaders(Sheet1_Sheet, [PromoteAllScalars=true]),
+				    #"Tipo cambiado" = Table.TransformColumnTypes(#"Encabezados promovidos",{{"ID_Campaña", type text}, {"Nombre_Campaña", type text}, {"Tipo_Campaña", type text}, {"Presupuesto", Int64.Type}, {"Canal_Adquisición", type text}, {"Fecha_Inicio", type datetime}, {"Fecha_Fin", type datetime}}),
+				    #"Filas en blanco eliminadas" = Table.SelectRows(#"Tipo cambiado", each not List.IsEmpty(List.RemoveMatchingItems(Record.FieldValues(_), {"", null}))),
+				    #"Tipo cambiado1" = Table.TransformColumnTypes(#"Filas en blanco eliminadas",{{"Fecha_Inicio", type date}, {"Fecha_Fin", type date}})
+				in
+				    #"Tipo cambiado1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegación
+

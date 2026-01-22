@@ -1,0 +1,75 @@
+table Clientes
+	lineageTag: 5c11b3ae-0886-4011-968b-5caba90efbf3
+
+	column ID_Cliente
+		dataType: string
+		lineageTag: 56681840-c194-4da5-a5a5-87b8f1c26256
+		summarizeBy: none
+		sourceColumn: ID_Cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nombre_Cliente
+		dataType: string
+		lineageTag: aad3569e-7dd7-4065-a289-f1aa561030fa
+		summarizeBy: none
+		sourceColumn: Nombre_Cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column Segmento
+		dataType: string
+		lineageTag: 44a60673-8ee2-42a4-8775-691fddbcdd69
+		summarizeBy: none
+		sourceColumn: Segmento
+
+		annotation SummarizationSetBy = Automatic
+
+	column Pais
+		dataType: string
+		lineageTag: aed26643-9abd-47b2-95ea-2b798235b660
+		summarizeBy: none
+		sourceColumn: Pais
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ciudad
+		dataType: string
+		lineageTag: a0aa607d-c989-4c0a-b8b6-4eb1800a3e03
+		summarizeBy: none
+		sourceColumn: Ciudad
+
+		annotation SummarizationSetBy = Automatic
+
+	column Fecha_Registro
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 6d28f35e-1bff-4c74-9aca-5224ee1907d4
+		summarizeBy: none
+		sourceColumn: Fecha_Registro
+
+		variation Variación
+			isDefault
+			relationship: 9c139286-ade7-4ec8-a4af-ea3c44cf0548
+			defaultHierarchy: LocalDateTable_13404f58-2651-4fc0-8104-2666e2806869.'Jerarquía de fechas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition Clientes = m
+		mode: import
+		source =
+				let
+				    Origen = Excel.Workbook(File.Contents("C:\Users\karla\Downloads\clientes_2023_141c9b5e-a279-4067-a637-a197e6464d79.xlsx"), null, true),
+				    Sheet1_Sheet = Origen{[Item="Sheet1",Kind="Sheet"]}[Data],
+				    #"Encabezados promovidos" = Table.PromoteHeaders(Sheet1_Sheet, [PromoteAllScalars=true]),
+				    #"Tipo cambiado" = Table.TransformColumnTypes(#"Encabezados promovidos",{{"ID_Cliente", type text}, {"Nombre_Cliente", type text}, {"Segmento", type text}, {"Pais", type text}, {"Ciudad", type text}, {"Fecha_Registro", type date}}),
+				    #"Tipo cambiado con configuración regional" = Table.TransformColumnTypes(#"Tipo cambiado", {{"Ciudad", type text}}, "es-MX")
+				in
+				    #"Tipo cambiado con configuración regional"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegación
+

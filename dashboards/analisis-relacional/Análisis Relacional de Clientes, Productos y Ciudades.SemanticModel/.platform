@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Análisis Relacional de Clientes, Productos y Ciudades"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "e4a1af6c-8f4f-4179-8361-6ec5734a2928"
+  }
+}

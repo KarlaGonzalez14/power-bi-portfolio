@@ -1,0 +1,69 @@
+table Empleados_2023
+	lineageTag: 4020e183-0c74-41aa-b05a-fa7d7a77c946
+
+	column ID_Empleado
+		dataType: string
+		lineageTag: bf3f4efa-651d-4e41-87e4-f9322db2dc4e
+		summarizeBy: none
+		sourceColumn: ID_Empleado
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nombre_Empleado
+		dataType: string
+		lineageTag: c8396e65-d848-4130-b65a-2476538f589d
+		summarizeBy: none
+		sourceColumn: Nombre_Empleado
+
+		annotation SummarizationSetBy = Automatic
+
+	column Departamento
+		dataType: string
+		lineageTag: 3f1fc770-dc2d-4ef0-8175-b5a7bba3ac65
+		summarizeBy: none
+		sourceColumn: Departamento
+
+		annotation SummarizationSetBy = Automatic
+
+	column Rol
+		dataType: string
+		lineageTag: 5e525ad9-2f6a-47fa-bb54-180af1dd68ef
+		summarizeBy: none
+		sourceColumn: Rol
+
+		annotation SummarizationSetBy = Automatic
+
+	column Salario
+		dataType: decimal
+		formatString: 0
+		lineageTag: d1747d12-6719-4712-adf8-d9ae66c33c62
+		summarizeBy: none
+		sourceColumn: Salario
+
+		annotation SummarizationSetBy = Automatic
+
+	column Fotografia
+		dataType: string
+		lineageTag: 88c3d03d-e2e1-4d3a-844e-c16370683501
+		summarizeBy: none
+		sourceColumn: Fotografia
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Empleados_2023 = m
+		mode: import
+		source =
+				let
+				    Origen = Excel.Workbook(File.Contents("C:\Users\karla\Downloads\empleados_2023_651b77c5-bd08-400e-8bf5-8de32c5ec21f.xlsx"), null, true),
+				    Sheet1_Sheet = Origen{[Item="Sheet1",Kind="Sheet"]}[Data],
+				    #"Encabezados promovidos" = Table.PromoteHeaders(Sheet1_Sheet, [PromoteAllScalars=true]),
+				    #"Tipo cambiado" = Table.TransformColumnTypes(#"Encabezados promovidos",{{"ID_Empleado", type text}, {"Nombre_Empleado", type text}, {"Departamento", type text}, {"Rol", type text}, {"Salario", Int64.Type}, {"Fotografia", type text}}),
+				    #"Filas en blanco eliminadas" = Table.SelectRows(#"Tipo cambiado", each not List.IsEmpty(List.RemoveMatchingItems(Record.FieldValues(_), {"", null}))),
+				    #"Tipo cambiado1" = Table.TransformColumnTypes(#"Filas en blanco eliminadas",{{"Salario", Currency.Type}})
+				in
+				    #"Tipo cambiado1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegación
+

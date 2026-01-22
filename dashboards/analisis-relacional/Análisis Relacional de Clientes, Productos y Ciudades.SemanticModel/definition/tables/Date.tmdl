@@ -1,0 +1,23 @@
+table Date
+	lineageTag: 786c4f94-2545-4a60-a885-ab0b4e66ce27
+
+	column Date
+		formatString: Short Date
+		lineageTag: f63efcaa-0a78-4526-a111-63caccad2938
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		variation Variación
+			isDefault
+			relationship: 0c84fc53-b4a9-456d-be68-56d4eaff1996
+			defaultHierarchy: LocalDateTable_75e382d1-98d5-460b-b8be-29badc6a56f2.'Jerarquía de fechas'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Date = calculated
+		mode: import
+		source = CALENDAR("01/01/2023","31/12/2023")
+
+	annotation PBI_Id = 2df53efd6b1640e38b4f3945a0443271
+

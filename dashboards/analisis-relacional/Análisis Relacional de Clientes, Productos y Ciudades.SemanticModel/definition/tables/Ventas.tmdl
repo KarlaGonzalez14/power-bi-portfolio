@@ -1,0 +1,104 @@
+table Ventas
+	lineageTag: 1bee1884-dbc0-4390-8569-d1d6e37f30ec
+
+	column Fecha_Venta
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: c4b24c7b-3640-43b8-92ce-cc6d794d980f
+		summarizeBy: none
+		sourceColumn: Fecha_Venta
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ID_Transaccion
+		dataType: string
+		lineageTag: 7382d4bb-a32a-4dcf-bb1e-ce69c0912456
+		summarizeBy: none
+		sourceColumn: ID_Transaccion
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_Empleado
+		dataType: string
+		lineageTag: ed8b1799-8d0a-4645-bdc6-451e1f3d33be
+		summarizeBy: none
+		sourceColumn: ID_Empleado
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_Cliente
+		dataType: string
+		lineageTag: d24378fa-8e1a-4ef5-a4a7-2c2e25a9fa5b
+		summarizeBy: none
+		sourceColumn: ID_Cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_Producto
+		dataType: string
+		lineageTag: 520791ee-6dbc-4158-8eae-0bdb48c9e577
+		summarizeBy: none
+		sourceColumn: ID_Producto
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_Campana
+		dataType: string
+		lineageTag: 97c5f6bc-95d5-4d6c-88e1-788c45779ad2
+		summarizeBy: none
+		sourceColumn: ID_Campana
+
+		annotation SummarizationSetBy = Automatic
+
+	column Numero_Leads_Generados
+		dataType: int64
+		formatString: 0
+		lineageTag: 807397c5-dad1-44ed-8275-06056d918aef
+		summarizeBy: sum
+		sourceColumn: Numero_Leads_Generados
+
+		annotation SummarizationSetBy = Automatic
+
+	column Canal_Adquisicion
+		dataType: string
+		lineageTag: 9826cd4c-a89d-4a9f-aeb5-7972e4c214c1
+		summarizeBy: none
+		sourceColumn: Canal_Adquisicion
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cantidad_Articulos_Vendidos
+		dataType: int64
+		formatString: 0
+		lineageTag: a1ec024e-35dc-4847-b6a0-9c438f1918e7
+		summarizeBy: sum
+		sourceColumn: Cantidad_Articulos_Vendidos
+
+		annotation SummarizationSetBy = Automatic
+
+	column Valor_Venta
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 74c87f34-af40-44ca-a3a3-f7ba4892f9a2
+		summarizeBy: sum
+		sourceColumn: Valor_Venta
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Ventas = m
+		mode: import
+		source =
+				let
+				    Origen = Excel.Workbook(File.Contents("C:\Users\karla\Downloads\ventas_2023_68bb21d4-82b9-4def-ba12-4efdb2732a15.xlsx"), null, true),
+				    Sheet1_Sheet = Origen{[Item="Sheet1",Kind="Sheet"]}[Data],
+				    #"Encabezados promovidos" = Table.PromoteHeaders(Sheet1_Sheet, [PromoteAllScalars=true]),
+				    #"Tipo cambiado" = Table.TransformColumnTypes(#"Encabezados promovidos",{{"Fecha_Venta", type date}, {"ID_Transaccion", type text}, {"ID_Empleado", type text}, {"ID_Cliente", type text}, {"ID_Producto", type text}, {"ID_Campana", type text}, {"Numero_Leads_Generados", Int64.Type}, {"Canal_Adquisicion", type text}, {"Cantidad_Articulos_Vendidos", Int64.Type}, {"Valor_Venta", Currency.Type}})
+				in
+				    #"Tipo cambiado"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegación
+
